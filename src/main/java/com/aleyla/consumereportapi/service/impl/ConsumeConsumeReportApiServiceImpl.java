@@ -20,34 +20,38 @@ public class ConsumeConsumeReportApiServiceImpl implements ConsumeReportApiServi
 
     @Override
     public ReportingApiLoginResponse login(LoginRequest request) {
-        ReportingApiLoginResponse login = client.login(request).orElseThrow(new ConsumeReportApiException("Check login info",ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
+        ReportingApiLoginResponse login = client.login(request)
+                                                .orElseThrow(new ConsumeReportApiException("Check login info", ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
         return login;
     }
 
     @Override
     public TransactionReportResponse getReport(TransactionReportRequest request) {
         String token = "";
-        return client.getReport(request, token).orElseThrow(new ConsumeReportApiException("Check request info",ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
+        return client.getReport(request, token)
+                     .orElseThrow(new ConsumeReportApiException("Check request info", ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
     }
 
     @Override
     public TransactionListResponse getList(TransactionListRequest request) {
         String token = "";
-        return client.getList(request, token).orElseThrow(new ConsumeReportApiException("Check request info",ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
+        return client.getList(request, token).orElseThrow(new ConsumeReportApiException("Check request info", ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
 
     }
 
     @Override
     public TransactionResponse getTransaction(TransactionRequest request) {
         String token = "";
-        return client.getTransaction(request, token).orElseThrow(new ConsumeReportApiException("Check request info",ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
+        return client.getTransaction(request, token)
+                     .orElseThrow(new ConsumeReportApiException("Check request info", ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
 
     }
 
     @Override
     public ClientInfoResponse getClientInfo(ClientInfoRequest request) {
         String token = "";
-        return client.getClientInfo(request, token).orElseThrow(new ConsumeReportApiException("Check request info",ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
+        return client.getClientInfo(request, token)
+                     .orElseThrow(new ConsumeReportApiException("Check request info", ErrorCodeEnum.EXTERNAL_SERVICE_ERROR));
 
     }
 }

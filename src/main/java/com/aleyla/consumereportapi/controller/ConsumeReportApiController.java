@@ -2,6 +2,7 @@ package com.aleyla.consumereportapi.controller;
 
 import com.aleyla.consumereportapi.request.LoginRequest;
 import com.aleyla.consumereportapi.response.ReportingApiLoginResponse;
+import com.aleyla.consumereportapi.response.TransactionReportResponse;
 import com.aleyla.consumereportapi.service.ConsumeReportApiService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,11 @@ public class ConsumeReportApiController {
     @PostMapping(value = "/login")
     public ReportingApiLoginResponse login(@Valid @RequestBody LoginRequest request) {
         return service.login(request);
+    }
+
+    @PostMapping(value = "/report")
+    public TransactionReportResponse getReport(@Valid @RequestBody LoginRequest request) {
+        return service.getReport(request);
     }
 
 
