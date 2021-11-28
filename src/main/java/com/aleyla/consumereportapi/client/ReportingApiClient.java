@@ -31,7 +31,7 @@ public class ReportingApiClient {
 
             HttpHeaders headers = getHttpHeaders();
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
-            var objectResponse = postRequest(getPath(config.getLogin()), postRequest);
+            ResponseEntity<Object> objectResponse = postRequest(getPath(config.getLogin()), postRequest);
             log.info("ReportingApiClient login ok");
             return Optional.of(objectMapper.convertValue(objectResponse.getBody(), ReportingApiLoginResponse.class));
         } catch (Exception e) {
@@ -50,7 +50,7 @@ public class ReportingApiClient {
             headers.add(HttpHeaders.AUTHORIZATION, token);
 
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
-            var objectResponse = postRequest(getPath(config.getReport()), postRequest);
+            ResponseEntity<Object> objectResponse = postRequest(getPath(config.getReport()), postRequest);
             log.info("ReportingApiClient report ok");
             return Optional.of(objectMapper.convertValue(objectResponse.getBody(), TransactionReportResponse.class));
         } catch (Exception e) {
@@ -74,7 +74,7 @@ public class ReportingApiClient {
             headers.add(HttpHeaders.AUTHORIZATION, token);
             headers.setContentType(org.springframework.http.MediaType.valueOf("application/json;charset=UTF-8"));
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
-            var objectResponse = postRequest(getPath(config.getList()), postRequest);
+            ResponseEntity<Object> objectResponse = postRequest(getPath(config.getList()), postRequest);
             log.info("ReportingApiClient list ok");
             return Optional.of(objectMapper.convertValue(objectResponse.getBody(), TransactionListResponse.class));
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class ReportingApiClient {
             ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
-            var objectResponse = postRequest(getPath(config.getTransaction()), postRequest);
+            ResponseEntity<Object> objectResponse = postRequest(getPath(config.getTransaction()), postRequest);
             log.info("ReportingApiClient transaction ok");
             return Optional.of(objectMapper.convertValue(objectResponse.getBody(), TransactionResponse.class));
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class ReportingApiClient {
             ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
-            var objectResponse = postRequest(getPath(config.getClient()), postRequest);
+            ResponseEntity<Object> objectResponse = postRequest(getPath(config.getClient()), postRequest);
             log.info("ReportingApiClient client ok");
             return Optional.of(objectMapper.convertValue(objectResponse.getBody(), ClientInfoResponse.class));
         } catch (Exception e) {
