@@ -1,11 +1,11 @@
 package com.aleyla.consumereportapi.client;
 
-import com.aleyla.consumereportapi.configuration.RestTemplateConfiguration;
+import com.aleyla.consumereportapi.configuration.RestTemplateConfig;
 import com.aleyla.consumereportapi.request.*;
 import com.aleyla.consumereportapi.response.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -14,25 +14,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class ReportingApiClient {
-
-    Logger log = LoggerFactory.getLogger(ReportingApiClient.class);
 
     private final ReportingApiClientConfig config;
 
-    private final RestTemplateConfiguration restTemplateConfiguration;
-
-    public ReportingApiClient(ReportingApiClientConfig config,
-                              RestTemplateConfiguration restTemplateConfiguration) {
-        this.config = config;
-        this.restTemplateConfiguration = restTemplateConfiguration;
-    }
+    private final RestTemplateConfig restTemplateConfig;
 
     public Optional<ReportingApiLoginResponse> login(LoginRequest request) {
         log.info("ReportingApiClient login start");
         try {
-            ObjectMapper objectMapper = restTemplateConfiguration.objectMapper();
+            ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
 
             HttpHeaders headers = getHttpHeaders();
@@ -46,11 +40,10 @@ public class ReportingApiClient {
         return Optional.empty();
     }
 
-
     public Optional<TransactionReportResponse> getReport(TransactionReportRequest request, String token) {
         log.info("ReportingApiClient report start");
         try {
-            ObjectMapper objectMapper = restTemplateConfiguration.objectMapper();
+            ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
 
             HttpHeaders headers = getHttpHeaders();
@@ -75,7 +68,7 @@ public class ReportingApiClient {
     public Optional<TransactionListResponse> getList(TransactionListRequest request, String token) {
         log.info("ReportingApiClient list start");
         try {
-            ObjectMapper objectMapper = restTemplateConfiguration.objectMapper();
+            ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
             HttpHeaders headers = new HttpHeaders();
             headers.add(HttpHeaders.AUTHORIZATION, token);
@@ -95,7 +88,7 @@ public class ReportingApiClient {
         try {
             HttpHeaders headers = getHttpHeaders();
             headers.add(HttpHeaders.AUTHORIZATION, token);
-            ObjectMapper objectMapper = restTemplateConfiguration.objectMapper();
+            ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
             var objectResponse = postRequest(getPath(config.getTransaction()), postRequest);
@@ -112,7 +105,7 @@ public class ReportingApiClient {
         try {
             HttpHeaders headers = getHttpHeaders();
             headers.add(HttpHeaders.AUTHORIZATION, token);
-            ObjectMapper objectMapper = restTemplateConfiguration.objectMapper();
+            ObjectMapper objectMapper = restTemplateConfig.objectMapper();
             String requestBody = objectMapper.writeValueAsString(request);
             HttpEntity<String> postRequest = new HttpEntity<>(requestBody, headers);
             var objectResponse = postRequest(getPath(config.getClient()), postRequest);
@@ -126,7 +119,7 @@ public class ReportingApiClient {
 
     private ResponseEntity<Object> postRequest(String path, HttpEntity<String> request) {
         log.debug("request started. url:[{}]", path);
-        return restTemplateConfiguration.restTemplate().exchange(path, HttpMethod.POST, request, Object.class);
+        return restTemplateConfig.restTemplate().exchange(path, HttpMethod.POST, request, Object.class);
     }
 
     private String getPath(String path) {

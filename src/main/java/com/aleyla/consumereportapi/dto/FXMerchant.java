@@ -2,9 +2,15 @@ package com.aleyla.consumereportapi.dto;
 
 import com.aleyla.consumereportapi.enums.Currency;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FXMerchant {
 
@@ -12,19 +18,4 @@ public class FXMerchant {
 
     private Currency originalCurrency;
 
-    public BigDecimal getOriginalAmount() {
-        return originalAmount;
-    }
-
-    public void setOriginalAmount(BigDecimal originalAmount) {
-        this.originalAmount = originalAmount;
-    }
-
-    public Currency getOriginalCurrency() {
-        return originalCurrency;
-    }
-
-    public void setOriginalCurrency(Currency originalCurrency) {
-        this.originalCurrency = originalCurrency;
-    }
 }

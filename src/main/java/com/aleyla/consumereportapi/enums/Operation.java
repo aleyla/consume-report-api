@@ -6,8 +6,8 @@ public enum Operation {
     DIRECT,
     REFUND,
     @JsonProperty("3D")
-    TREED,
+    TREE_D,
     @JsonProperty("3DAUTH")
-    TREEDAUTH,
+    TREE_D_AUTH,
     STORED;
 }

@@ -1,10 +1,12 @@
 package com.aleyla.consumereportapi.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Data
 public class TransactionReportRequest {
 
     @NotNull
@@ -15,39 +17,8 @@ public class TransactionReportRequest {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate toDate;
 
-    private Integer merchant;
+    private Long merchant;
 
-    private Integer acquirer;
+    private Long acquirer;
 
-    public LocalDate getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(LocalDate fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public LocalDate getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(LocalDate toDate) {
-        this.toDate = toDate;
-    }
-
-    public Integer getMerchant() {
-        return merchant;
-    }
-
-    public void setMerchant(Integer merchant) {
-        this.merchant = merchant;
-    }
-
-    public Integer getAcquirer() {
-        return acquirer;
-    }
-
-    public void setAcquirer(Integer acquirer) {
-        this.acquirer = acquirer;
-    }
 }

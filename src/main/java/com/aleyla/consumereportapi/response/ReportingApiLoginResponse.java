@@ -2,7 +2,11 @@ package com.aleyla.consumereportapi.response;
 
 import com.aleyla.consumereportapi.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReportingApiLoginResponse {
 
@@ -10,20 +14,4 @@ public class ReportingApiLoginResponse {
 
     private Status status;
 
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }
