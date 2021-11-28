@@ -2,7 +2,7 @@ package com.aleyla.consumereportapi.enums;
 
 import org.springframework.http.HttpStatus;
 
-public enum ErrorCodeEnum {
+public enum ExceptionCode {
     INTERNAL_SERVER_ERROR(1000, "Internal server error.", HttpStatus.INTERNAL_SERVER_ERROR),
     BAD_REQUEST_ERROR(1002, "Field validation error: ", HttpStatus.BAD_REQUEST),
     EXTERNAL_SERVICE_ERROR(1003, "External server error: ", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -13,7 +13,7 @@ public enum ErrorCodeEnum {
 
     private HttpStatus httpStatus;
 
-    ErrorCodeEnum(int code, String message, HttpStatus httpStatus) {
+    ExceptionCode(int code, String message, HttpStatus httpStatus) {
         this.code = code;
         this.message = message;
         this.httpStatus = httpStatus;

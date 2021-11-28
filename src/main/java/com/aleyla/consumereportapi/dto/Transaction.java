@@ -10,11 +10,16 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MerchantTransaction {
+public class Transaction {
+
+    private Long id;
+
+    private BigDecimal amount;
 
     private String referenceNo;
 
@@ -44,15 +49,11 @@ public class MerchantTransaction {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
 
-    private Long id;
-
     private Long acquirerTransactionId;
 
     private String code;
 
     private String message;
-
-    private String transactionId;
 
     private Agent agent;
 }

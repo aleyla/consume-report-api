@@ -17,7 +17,7 @@ public class DataDto {
 
     private List<IPN> ipn;
 
-    private List<MerchantTransaction> transaction;
+    private List<Transaction> transaction;
 
     private List<Acquirer> acquirer;
 

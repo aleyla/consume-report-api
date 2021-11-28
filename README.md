@@ -23,3 +23,7 @@ For running the tests
 After running the project, swagger link is: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 # Endpoints
+
+# Credentials
+Email: demo@financialhouse.io
+Password: cjaiU8CV

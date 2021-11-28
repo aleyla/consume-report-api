@@ -1,15 +1,15 @@
 package com.aleyla.consumereportapi.exception;
 
-import com.aleyla.consumereportapi.enums.ErrorCodeEnum;
+import com.aleyla.consumereportapi.enums.ExceptionCode;
 
 import java.util.function.Supplier;
 
 public class ConsumeReportApiException extends RuntimeException implements Supplier<ConsumeReportApiException> {
 
-    private final ErrorCodeEnum errorCode;
+    private final ExceptionCode errorCode;
 
 
-    public ConsumeReportApiException(String message, ErrorCodeEnum errorCode) {
+    public ConsumeReportApiException(String message, ExceptionCode errorCode) {
         super(message);
         this.errorCode = errorCode;
     }
@@ -19,7 +19,7 @@ public class ConsumeReportApiException extends RuntimeException implements Suppl
         return this;
     }
 
-    public ErrorCodeEnum getErrorCode() {
+    public ExceptionCode getErrorCode() {
         return errorCode;
     }
 }

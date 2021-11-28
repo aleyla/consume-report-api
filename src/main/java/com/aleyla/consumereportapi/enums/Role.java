@@ -1,6 +1,5 @@
 package com.aleyla.consumereportapi.enums;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -10,9 +9,11 @@ import java.util.Optional;
 
 public enum Role {
 
-    @JsonProperty("admin") ADMIN("ROLE_ADMIN"),
+    ADMIN("ROLE_ADMIN"),
 
-    @JsonProperty("user") USER("ROLE_USER");
+    USER("ROLE_USER"),
+
+    ANONYMOUS("ANONYMOUS");
 
     private String roleName;
 
@@ -27,7 +28,7 @@ public enum Role {
         }
     }
 
-    private Role(String roleName) {
+    Role(String roleName) {
         this.roleName = roleName;
         this.grantedAuthority = new SimpleGrantedAuthority(roleName);
     }

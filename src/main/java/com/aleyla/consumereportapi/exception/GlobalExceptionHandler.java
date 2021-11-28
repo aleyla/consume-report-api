@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.exception;
 
-import com.aleyla.consumereportapi.enums.ErrorCodeEnum;
+import com.aleyla.consumereportapi.enums.ExceptionCode;
 import com.aleyla.consumereportapi.response.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,8 +32,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BindException.class)
     public ErrorResponse handleBindException(BindException ex, WebRequest request) {
-        ErrorResponse message = new ErrorResponse(ErrorCodeEnum.BAD_REQUEST_ERROR.getCode(),
-                                                  ErrorCodeEnum.BAD_REQUEST_ERROR.getMessage().concat(ex.getMessage()), request.getSessionId(),
+        ErrorResponse message = new ErrorResponse(ExceptionCode.BAD_REQUEST_ERROR.getCode(),
+                                                  ExceptionCode.BAD_REQUEST_ERROR.getMessage().concat(ex.getMessage()), request.getSessionId(),
                                                   LocalDateTime.now());
 
         log.error("BAD_REQUEST_ERROR", ex);
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse globalExceptionHandler(Exception ex, WebRequest request) {
-        ErrorResponse message = new ErrorResponse(ErrorCodeEnum.INTERNAL_SERVER_ERROR.getCode(), ErrorCodeEnum.INTERNAL_SERVER_ERROR.getMessage(),
+        ErrorResponse message = new ErrorResponse(ExceptionCode.INTERNAL_SERVER_ERROR.getCode(), ExceptionCode.INTERNAL_SERVER_ERROR.getMessage(),
                                                   request.getSessionId(), LocalDateTime.now());
 
         log.error("INTERNAL_SERVER_ERROR", ex);

@@ -1,5 +1,7 @@
 package com.aleyla.consumereportapi.controller;
 
+import com.aleyla.consumereportapi.dto.Transaction;
+import com.aleyla.consumereportapi.entity.TransactionEntity;
 import com.aleyla.consumereportapi.enums.Status;
 import com.aleyla.consumereportapi.request.*;
 import com.aleyla.consumereportapi.response.*;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -64,5 +67,9 @@ public class ReportApiController {
         return ResponseEntity.ok(transactionService.getList(request));
     }
 
+    @PostMapping(value = "/transactions")
+    public ResponseEntity<List<Transaction>> getAll() {
+        return ResponseEntity.ok(transactionService.getAll());
+    }
 
 }

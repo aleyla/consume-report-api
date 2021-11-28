@@ -1,8 +1,10 @@
 package com.aleyla.consumereportapi.entity;
 
 import com.aleyla.consumereportapi.enums.Role;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

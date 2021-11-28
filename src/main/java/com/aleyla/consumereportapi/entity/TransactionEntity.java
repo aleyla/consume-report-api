@@ -1,9 +1,6 @@
 package com.aleyla.consumereportapi.entity;
 
-import com.aleyla.consumereportapi.enums.Currency;
-import com.aleyla.consumereportapi.enums.Operation;
-import com.aleyla.consumereportapi.enums.PaymentMethod;
-import com.aleyla.consumereportapi.enums.Status;
+import com.aleyla.consumereportapi.enums.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,11 +15,12 @@ import java.time.LocalDate;
 public class TransactionEntity extends BaseEntity {
 
     private BigDecimal amount;
+
     @Column(length = 3)
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    private LocalDate txDate;
+    private LocalDate transactionDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomerInfoEntity customerInfo;
@@ -44,6 +42,7 @@ public class TransactionEntity extends BaseEntity {
 
     private String referenceNo;
 
-    private String errorCode;
+    @Enumerated(EnumType.STRING)
+    private ErrorCode errorCode;
 
 }

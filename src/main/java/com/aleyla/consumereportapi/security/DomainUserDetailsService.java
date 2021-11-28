@@ -1,7 +1,7 @@
 package com.aleyla.consumereportapi.security;
 
 import com.aleyla.consumereportapi.entity.UserEntity;
-import com.aleyla.consumereportapi.enums.ErrorCodeEnum;
+import com.aleyla.consumereportapi.enums.ExceptionCode;
 import com.aleyla.consumereportapi.exception.ConsumeReportApiException;
 import com.aleyla.consumereportapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +27,7 @@ public class DomainUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String email) {
         log.debug("Authenticating {}", email);
         UserEntity userEntity = userRepository.findByEmail(email)
-                                              .orElseThrow(new ConsumeReportApiException("User not found", ErrorCodeEnum.BAD_REQUEST_ERROR));
+                                              .orElseThrow(new ConsumeReportApiException("User not found", ExceptionCode.BAD_REQUEST_ERROR));
         return createSpringSecurityUser(userEntity);
     }
 

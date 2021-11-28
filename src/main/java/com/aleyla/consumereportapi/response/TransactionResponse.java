@@ -18,5 +18,5 @@ public class TransactionResponse {
 
     private List<Merchant> merchant;
 
-    private List<MerchantTransaction> merchantTransactions;
+    private List<Transaction> transactions;
 }

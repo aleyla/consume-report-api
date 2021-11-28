@@ -36,7 +36,7 @@ public class DBInitializerUtil {
 
     @PostConstruct
     private void initDb() {
-        userRepository.save(getDefaultUserEntity());
+        saveDefaultUserEntity();
         transactionRepository.saveAll(generateTransaction());
     }
 
@@ -45,17 +45,16 @@ public class DBInitializerUtil {
         MerchantEntity merchant = createMerchant();
         AcquirerEntity acquirer = createAcquirer();
         CustomerInfoEntity customerInfo = createCustomerInfoEntity();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 17; i++) {
             TransactionEntity transaction = new TransactionEntity();
-            transaction.setId(Long.valueOf(++i));
             transaction.setAmount(BigDecimal.TEN.multiply(BigDecimal.valueOf(i)));
             transaction.setMerchant(merchant);
             transaction.setAcquirer(acquirer);
             transaction.setCustomerInfo(customerInfo);
-            transaction.setTxDate(LocalDate.now().minus(Period.ofDays(i)));
+            transaction.setTransactionDate(LocalDate.now().minus(Period.ofDays(i)));
             if (i % 2 == 0) {
                 transaction.setCurrency(Currency.USD);
-                transaction.setOperation(Operation.TREE_D);
+                transaction.setOperation(Operation.THREE_D);
                 transaction.setStatus(Status.APPROVED);
                 transaction.setPaymentMethod(PaymentMethod.STORED);
                 transaction.setErrorCode(null);
@@ -64,7 +63,7 @@ public class DBInitializerUtil {
                 transaction.setStatus(Status.DECLINED);
                 transaction.setOperation(Operation.DIRECT);
                 transaction.setPaymentMethod(PaymentMethod.PAYTOCARD);
-                transaction.setErrorCode("Invalid Card");
+                transaction.setErrorCode(ErrorCode.TREE_D);
             }
             transactionEntities.add(transaction);
         }
@@ -83,7 +82,7 @@ public class DBInitializerUtil {
         return merchantRepository.save(entity);
     }
 
-    private CustomerInfoEntity createCustomerInfoEntity() {
+    public CustomerInfoEntity createCustomerInfoEntity() {
         CustomerInfoEntity entity = new CustomerInfoEntity();
         entity.setEmail("ali@mail.com");
         entity.setExpiryMonth("1");
@@ -101,13 +100,21 @@ public class DBInitializerUtil {
         return addressRepository.save(addressEntity);
     }
 
-    private UserEntity getDefaultUserEntity() {
+    public UserEntity saveDefaultUserEntity() {
         UserEntity userEntity = new UserEntity();
         userEntity.setId(1L);
-        userEntity.setEmail("admin@mail.com");
-        userEntity.setPassword(passwordEncoder.encode("12345"));
+        userEntity.setEmail("demo@financialhouse.io");
+        userEntity.setPassword(getPassword("cjaiU8CV"));
         userEntity.setRole(Role.ADMIN);
-        return userEntity;
+        return userRepository.save(userEntity);
+    }
+
+    public String getPassword(String password) {
+        return passwordEncoder.encode(password);
+    }
+
+    public UserEntity saveUser(UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 
 }
