@@ -1,12 +1,12 @@
 package com.aleyla.consumereportapi.controller;
 
-import com.aleyla.consumereportapi.entity.UserEntity;
+import com.aleyla.consumereportapi.model.entity.UserEntity;
 import com.aleyla.consumereportapi.enums.Role;
 import com.aleyla.consumereportapi.repository.transaction.TransactionRepository;
-import com.aleyla.consumereportapi.request.ClientInfoRequest;
-import com.aleyla.consumereportapi.request.LoginRequest;
+import com.aleyla.consumereportapi.model.request.ClientInfoRequest;
+import com.aleyla.consumereportapi.model.request.LoginRequest;
 import com.aleyla.consumereportapi.security.jwt.TokenCreator;
-import com.aleyla.consumereportapi.service.Constants;
+import com.aleyla.consumereportapi.util.Constants;
 import com.aleyla.consumereportapi.service.TransactionService;
 import com.aleyla.consumereportapi.util.DBInitializerUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -98,7 +98,7 @@ class ReportApiControllerTest {
     void can_not_request_without_token() throws Exception {
         mockMvc.perform(post("/api/v3/client")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(objectMapper.writeValueAsString(new ClientInfoRequest("1"))))
+                                .content(objectMapper.writeValueAsString(new ClientInfoRequest())))
                .andExpect(status().isBadRequest()).andReturn();
 
     }

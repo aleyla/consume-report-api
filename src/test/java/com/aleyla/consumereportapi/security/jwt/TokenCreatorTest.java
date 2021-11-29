@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 class TokenCreatorTest {
 
@@ -53,7 +54,8 @@ class TokenCreatorTest {
 
     @Test
     public void validate_false_when_JWT_invalid_signature() {
-        boolean isTokenValid = tokenCreator.validateToken(createTokenWithInvalidSignature());
+        String tokenWithInvalidSignature = createTokenWithInvalidSignature();
+        boolean isTokenValid = tokenCreator.validateToken(tokenWithInvalidSignature);
         assertThat(isTokenValid).isEqualTo(false);
     }
 

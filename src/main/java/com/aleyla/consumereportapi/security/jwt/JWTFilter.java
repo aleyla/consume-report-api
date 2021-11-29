@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.security.jwt;
 
-import com.aleyla.consumereportapi.service.Constants;
+import com.aleyla.consumereportapi.util.Constants;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;

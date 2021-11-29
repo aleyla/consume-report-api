@@ -1,8 +1,8 @@
 package com.aleyla.consumereportapi.client;
 
 import com.aleyla.consumereportapi.configuration.RestTemplateConfig;
-import com.aleyla.consumereportapi.request.*;
-import com.aleyla.consumereportapi.response.*;
+import com.aleyla.consumereportapi.model.request.*;
+import com.aleyla.consumereportapi.model.response.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

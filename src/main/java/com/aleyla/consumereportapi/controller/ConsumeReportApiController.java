@@ -1,7 +1,7 @@
 package com.aleyla.consumereportapi.controller;
 
-import com.aleyla.consumereportapi.request.LoginRequest;
-import com.aleyla.consumereportapi.response.ReportingApiLoginResponse;
+import com.aleyla.consumereportapi.model.request.LoginRequest;
+import com.aleyla.consumereportapi.model.response.ReportingApiLoginResponse;
 import com.aleyla.consumereportapi.service.ConsumeReportApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

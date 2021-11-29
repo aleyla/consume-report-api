@@ -1,12 +1,12 @@
 package com.aleyla.consumereportapi.controller;
 
-import com.aleyla.consumereportapi.entity.TransactionEntity;
 import com.aleyla.consumereportapi.enums.Status;
-import com.aleyla.consumereportapi.request.*;
-import com.aleyla.consumereportapi.response.*;
+import com.aleyla.consumereportapi.model.entity.TransactionEntity;
+import com.aleyla.consumereportapi.model.request.*;
+import com.aleyla.consumereportapi.model.response.*;
 import com.aleyla.consumereportapi.security.jwt.TokenCreator;
-import com.aleyla.consumereportapi.service.Constants;
 import com.aleyla.consumereportapi.service.TransactionService;
+import com.aleyla.consumereportapi.util.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

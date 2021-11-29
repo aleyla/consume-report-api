@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.repository.transaction;
 
-import com.aleyla.consumereportapi.entity.TransactionEntity;
+import com.aleyla.consumereportapi.model.entity.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

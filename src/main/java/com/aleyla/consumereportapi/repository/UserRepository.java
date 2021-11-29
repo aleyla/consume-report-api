@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.repository;
 
-import com.aleyla.consumereportapi.entity.UserEntity;
+import com.aleyla.consumereportapi.model.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

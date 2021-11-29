@@ -1,7 +1,7 @@
 package com.aleyla.consumereportapi.exception;
 
 import com.aleyla.consumereportapi.enums.ExceptionCode;
-import com.aleyla.consumereportapi.response.ErrorResponse;
+import com.aleyla.consumereportapi.model.response.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

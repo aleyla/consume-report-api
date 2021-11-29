@@ -1,28 +1,27 @@
 package com.aleyla.consumereportapi.service.impl;
 
-import com.aleyla.consumereportapi.dto.FX;
-import com.aleyla.consumereportapi.dto.FXMerchant;
-import com.aleyla.consumereportapi.dto.ResponseDto;
-import com.aleyla.consumereportapi.dto.Transaction;
-import com.aleyla.consumereportapi.entity.TransactionEntity;
+import com.aleyla.consumereportapi.model.dto.FX;
+import com.aleyla.consumereportapi.model.dto.FXMerchant;
+import com.aleyla.consumereportapi.model.dto.ResponseDto;
+import com.aleyla.consumereportapi.model.entity.TransactionEntity;
 import com.aleyla.consumereportapi.enums.Currency;
 import com.aleyla.consumereportapi.enums.ExceptionCode;
 import com.aleyla.consumereportapi.enums.Status;
 import com.aleyla.consumereportapi.exception.ConsumeReportApiException;
-import com.aleyla.consumereportapi.mapper.AcquirerMapper;
-import com.aleyla.consumereportapi.mapper.CustomerInfoMapper;
-import com.aleyla.consumereportapi.mapper.MerchantMapper;
-import com.aleyla.consumereportapi.mapper.TransactionMapper;
+import com.aleyla.consumereportapi.model.mapper.AcquirerMapper;
+import com.aleyla.consumereportapi.model.mapper.CustomerInfoMapper;
+import com.aleyla.consumereportapi.model.mapper.MerchantMapper;
+import com.aleyla.consumereportapi.model.mapper.TransactionMapper;
 import com.aleyla.consumereportapi.repository.transaction.TransactionRepository;
 import com.aleyla.consumereportapi.repository.transaction.TransactionSpecification;
-import com.aleyla.consumereportapi.request.ClientInfoRequest;
-import com.aleyla.consumereportapi.request.TransactionListRequest;
-import com.aleyla.consumereportapi.request.TransactionReportRequest;
-import com.aleyla.consumereportapi.request.TransactionRequest;
-import com.aleyla.consumereportapi.response.ClientInfoResponse;
-import com.aleyla.consumereportapi.response.TransactionListResponse;
-import com.aleyla.consumereportapi.response.TransactionReportResponse;
-import com.aleyla.consumereportapi.response.TransactionResponse;
+import com.aleyla.consumereportapi.model.request.ClientInfoRequest;
+import com.aleyla.consumereportapi.model.request.TransactionListRequest;
+import com.aleyla.consumereportapi.model.request.TransactionReportRequest;
+import com.aleyla.consumereportapi.model.request.TransactionRequest;
+import com.aleyla.consumereportapi.model.response.ClientInfoResponse;
+import com.aleyla.consumereportapi.model.response.TransactionListResponse;
+import com.aleyla.consumereportapi.model.response.TransactionReportResponse;
+import com.aleyla.consumereportapi.model.response.TransactionResponse;
 import com.aleyla.consumereportapi.service.TransactionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
@@ -33,7 +32,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

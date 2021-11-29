@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.security;
 
-import com.aleyla.consumereportapi.service.Constants;
+import com.aleyla.consumereportapi.util.Constants;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 

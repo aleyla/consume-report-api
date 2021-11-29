@@ -1,7 +1,7 @@
 package com.aleyla.consumereportapi.util;
 
-import com.aleyla.consumereportapi.entity.*;
 import com.aleyla.consumereportapi.enums.*;
+import com.aleyla.consumereportapi.model.entity.*;
 import com.aleyla.consumereportapi.repository.*;
 import com.aleyla.consumereportapi.repository.transaction.TransactionRepository;
 import lombok.RequiredArgsConstructor;

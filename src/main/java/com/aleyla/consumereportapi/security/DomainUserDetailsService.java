@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.security;
 
-import com.aleyla.consumereportapi.entity.UserEntity;
+import com.aleyla.consumereportapi.model.entity.UserEntity;
 import com.aleyla.consumereportapi.enums.ExceptionCode;
 import com.aleyla.consumereportapi.exception.ConsumeReportApiException;
 import com.aleyla.consumereportapi.repository.UserRepository;

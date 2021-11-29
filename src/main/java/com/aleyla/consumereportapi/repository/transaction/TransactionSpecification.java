@@ -1,9 +1,6 @@
 package com.aleyla.consumereportapi.repository.transaction;
 
-import com.aleyla.consumereportapi.entity.TransactionEntity;
-import com.aleyla.consumereportapi.enums.Operation;
-import com.aleyla.consumereportapi.enums.PaymentMethod;
-import com.aleyla.consumereportapi.enums.Status;
+import com.aleyla.consumereportapi.model.entity.TransactionEntity;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.time.LocalDate;

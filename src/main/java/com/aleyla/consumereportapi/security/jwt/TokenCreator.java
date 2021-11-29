@@ -1,6 +1,6 @@
 package com.aleyla.consumereportapi.security.jwt;
 
-import com.aleyla.consumereportapi.service.Constants;
+import com.aleyla.consumereportapi.util.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

@@ -1,7 +1,7 @@
 package com.aleyla.consumereportapi.service;
 
-import com.aleyla.consumereportapi.request.*;
-import com.aleyla.consumereportapi.response.*;
+import com.aleyla.consumereportapi.model.request.*;
+import com.aleyla.consumereportapi.model.response.*;
 
 public interface ConsumeReportApiService {
 
