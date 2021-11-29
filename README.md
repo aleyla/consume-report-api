@@ -22,8 +22,10 @@ For running the tests
 
 After running the project, swagger link is: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-# Endpoints
 
 # Credentials
-Email: demo@financialhouse.io
-Password: cjaiU8CV
+
+    Email: demo@financialhouse.io
+    Password: cjaiU8CV
+
+Entities are stored in H2 db and ids start 1L.
