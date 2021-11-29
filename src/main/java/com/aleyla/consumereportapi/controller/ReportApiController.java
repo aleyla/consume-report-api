@@ -1,6 +1,5 @@
 package com.aleyla.consumereportapi.controller;
 
-import com.aleyla.consumereportapi.dto.Transaction;
 import com.aleyla.consumereportapi.entity.TransactionEntity;
 import com.aleyla.consumereportapi.enums.Status;
 import com.aleyla.consumereportapi.request.*;
@@ -41,9 +40,9 @@ public class ReportApiController {
                 UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(usernamePasswordAuthenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = tokenCreator.createToken(authentication, false);
+        String token = Constants.AUTHORIZATION_KEY.concat(tokenCreator.createToken(authentication, false));
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(Constants.AUTHORIZATION_HEADER, Constants.AUTHORIZATION_KEY.concat(token));
+        httpHeaders.add(Constants.AUTHORIZATION_HEADER, token);
         return new ResponseEntity<>(new ReportingApiLoginResponse(token, Status.APPROVED), httpHeaders, HttpStatus.OK);
     }
 
@@ -68,7 +67,7 @@ public class ReportApiController {
     }
 
     @PostMapping(value = "/transactions")
-    public ResponseEntity<List<Transaction>> getAll() {
+    public ResponseEntity<List<TransactionEntity>> getAll() {
         return ResponseEntity.ok(transactionService.getAll());
     }
 

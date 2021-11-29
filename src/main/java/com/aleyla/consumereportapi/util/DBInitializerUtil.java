@@ -73,6 +73,8 @@ public class DBInitializerUtil {
     public AcquirerEntity createAcquirer() {
         AcquirerEntity entity = new AcquirerEntity();
         entity.setName("acquirer");
+        entity.setCode("acquirerCode");
+        entity.setType(PaymentMethod.PAYTOCARD);
         return acquirerRepository.save(entity);
     }
 
@@ -96,6 +98,7 @@ public class DBInitializerUtil {
     private AddressEntity createAddress() {
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setAddress1("test");
+        addressEntity.setTitle("Fatura adresi");
         addressEntity.setCity("london");
         return addressRepository.save(addressEntity);
     }

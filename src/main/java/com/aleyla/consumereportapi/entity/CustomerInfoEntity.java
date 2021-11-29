@@ -3,7 +3,10 @@ package com.aleyla.consumereportapi.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Data
@@ -26,11 +29,11 @@ public class CustomerInfoEntity extends BaseEntity {
 
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "billing_address_id")
     private AddressEntity billingAddress;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "shipping_address_id")
     private AddressEntity shippingAddress;
 

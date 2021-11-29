@@ -79,8 +79,8 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public List<Transaction> getAll() {
-        return repository.findAll().stream().map(transactionMapper::map).collect(Collectors.toList());
+    public List<TransactionEntity> getAll() {
+        return repository.findAll();
     }
 
     @Override
@@ -113,11 +113,11 @@ public class TransactionServiceImpl implements TransactionService {
         if (request.getFromDate() != null && request.getToDate() != null) {
             query = query.and(TransactionSpecification.fromTo(request.getFromDate(), request.getToDate()));
         }
-        if (request.getMerchant() != null) {
-            query = query.and(TransactionSpecification.merchant(request.getMerchant()));
+        if (request.getMerchantId() != null) {
+            query = query.and(TransactionSpecification.merchant(request.getMerchantId()));
         }
-        if (request.getAcquirer() != null) {
-            query = query.and(TransactionSpecification.acquirer(request.getAcquirer()));
+        if (request.getAcquirerId() != null) {
+            query = query.and(TransactionSpecification.acquirer(request.getAcquirerId()));
         }
         return query;
     }

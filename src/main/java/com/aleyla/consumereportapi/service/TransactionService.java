@@ -21,7 +21,7 @@ public interface TransactionService {
 
     TransactionListResponse getList(TransactionListRequest request);
 
-    List<Transaction> getAll();
+    List<TransactionEntity> getAll();
 
     TransactionReportResponse getReport(TransactionReportRequest request);
 

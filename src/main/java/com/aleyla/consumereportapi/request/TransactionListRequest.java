@@ -4,16 +4,17 @@ import com.aleyla.consumereportapi.enums.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 public class TransactionListRequest {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date fromDate;
+    private LocalDate fromDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date toDate;
+    private LocalDate toDate;
 
     private Status status;
 
